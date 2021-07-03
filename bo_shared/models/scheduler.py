@@ -87,10 +87,10 @@ class CronJobBase(BaseModel):
 
         return value
 
-    @staticmethod
-    def instance_from_tortoise_model(model):
+    @classmethod
+    def instance_from_tortoise_model(cls, model):
         key_values = {k: getattr(model, k) for k in model._meta.fields}
-        return CronJob(**key_values)
+        return cls(**key_values)
 
 
 class CronJob(CronJobBase):
