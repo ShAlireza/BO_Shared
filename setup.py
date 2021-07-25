@@ -11,7 +11,9 @@ setup(
     packages=find_packages(where='.'),
     package_dir={'': '.'},
     install_requires=[
-        'pydantic>=1.8.2'
+        'pydantic>=1.8.2',
+        'requests>=2.25.1',
+        'aiohttp>=3.7.4.post0'
     ],
 
     classifiers=[
