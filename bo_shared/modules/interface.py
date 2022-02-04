@@ -9,7 +9,7 @@ import pika
 import aiohttp
 from minio import Minio
 
-from config import MANAGER_HOST, MANAGER_PORT, MINIO_CLIENT
+from config import MANAGER_HOST, MANAGER_PORT, MANAGER_TOKEN, MINIO_CLIENT
 
 
 # Todo
@@ -72,6 +72,9 @@ class BaseModule(abc.ABC):
             json={
                 'host': host,
                 'port': port
+            },
+            headers={
+                "module_token": MANAGER_TOKEN
             }
         )
 

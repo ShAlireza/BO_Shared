@@ -47,7 +47,6 @@ class ModuleApp(FastAPI):
         self.port = config.PORT
         self.name = config.NAME
         self.valid_credential_names = config.VALID_CREDENTIAL_NAMES
-        self.token = None
 
     def login(self):
         response = requests.post(
@@ -72,7 +71,7 @@ class ModuleApp(FastAPI):
 
         data = response.json()
 
-        self.token = data.get('token').get('key')
+        config.MANAGER_TOKEN = data.get('token').get('key')
         config.RABBITMQ_HOST = data.get('rabbitmq_host')
         config.RABBITMQ_PORT = data.get('rabbitmq_port')
         config.RABBITMQ_QUEUE = data.get('rabbitmq_queue')
